@@ -5,15 +5,15 @@
 cd [project location]
 npm i
 ```
-1. Open `/docker/docker-compose.yml` file and check ports.
-2. Run docker:
+2. Open `/docker/docker-compose.yml` file and check ports.
+3. Run docker:
 ```
 cd docker
 docker-compose up
 ```
-3. Run server:
+4. Run server:
 ```
 cd ..
 npm run start
 ```
-4. Open http://localhost:3000/
+5. Open http://localhost:3000/
