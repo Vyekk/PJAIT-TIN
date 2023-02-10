@@ -92,11 +92,6 @@
         let error = document.querySelector(".dateError");
         error.innerText = "Data wypożyczenia nie może być większa od daty zwrotu!";
         return valid;
-    } else if (rentalDate.getTime() < (new Date).getTime()) {
-        valid = false;
-        let error = document.querySelector(".dateError");
-        error.innerText = "Data wypożyczenia nie może być mniejsza niż aktualny dzień!";
-        return valid;
     } else {
         return valid;
     }
