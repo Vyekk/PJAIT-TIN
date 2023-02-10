@@ -1,0 +1,39 @@
+<%- include('../../fragments/header.ejs') %>
+<section id="my-game-list" class="py-5">
+    <main class="container">
+        <h2 class="display-5">Lista wypożyczeń</h2>
+        <div class="table-responsive">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Wypożyczenia</th>
+                        <th scope="col">Id Instrumentu</th>
+                        <th scope="col">Id Klienta</th>
+                        <th scope="col">Data wypożyczenia</th>
+                        <th scope="col">Data zwrotu</th>
+                        <th scope="col">Koszt przeglądu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% for (let rental of rentals) { %>
+                    <tr>
+                        <th scope="row"><%= rental.IdWypozyczenie %></th>
+                        <td><%= rental.IdInstrument %></td>
+                        <td><%= rental.IdKlient %></td>
+                        <td><%= rental.Data_wypozyczenia.toLocaleDateString() %></td>
+                        <td><%= rental.Data_zwrotu.toLocaleDateString() %></td>
+                        <td><%= rental.Koszt_przegladu %></td>
+                        <td colspan="3">
+                            <a href="/rentals/edit/<%=rental.IdWypozyczenie%>" class="btn btn-success mt-1">Edytuj</a>
+                            <a href="/rentals/details/<%=rental.IdWypozyczenie%>" class="btn btn-warning mt-1">Szczegóły</a>
+                            <a href="/rentals/delete/<%=rental.IdWypozyczenie%>" class="btn btn-danger mt-1">Usuń</a>
+                        </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+        <a href="/rentals/add" class="btn btn-primary">Dodaj nowe</a>
+    </main>
+</section>
+<%- include('../../fragments/footer.ejs') %>

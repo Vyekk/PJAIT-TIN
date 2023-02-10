@@ -1,0 +1,105 @@
+<%- include('../../fragments/header.ejs') %>
+<section id="my-game-list" class="py-5">
+    <main class="container">
+        <h2 class="display-5"><%= pageTitle %></h2>
+        <form method="post" onsubmit="return validatePostRentalForm();" action="<%=formAction%>">
+            <input type="hidden" name="IdWypozyczenie" id="IdWypozyczenie" value="<%=rental.IdWypozyczenie%>">
+            <div class="form-group">
+                <label for="IdInstrument">IdInstrument: *</label>
+                <input type="text" name="IdInstrument" id="IdInstrument" class="form-control" value="<%=rental.IdInstrument%>" <%=(formMode=='showDetails') ? 'disabled' : ''%> required>
+            </div>
+            <div class="form-group">
+                <label for="idKlient">IdKlient: *</label>
+                <input type="text" name="IdKlient" id="IdKlient" class="form-control" value="<%=rental.IdKlient%>" <%=(formMode=='showDetails') ? 'disabled' : ''%> required>
+            </div>
+            <div class="form-group">
+                <label for="Data_wypozyczenia">Data wypożyczenia: *</label>
+                <input type="date" name="Data_wypozyczenia" id="Data_wypozyczenia" class="form-control" <% if (formMode != 'createNew') { %> value="<%= new Date(new Date(rental.Data_wypozyczenia).setDate(new Date(rental.Data_wypozyczenia).getDate() + 1)).toISOString().substr(0, 10) %>" <% } %> <%=(formMode=='showDetails') ? 'disabled' : ''%> required>
+            </div>
+            <div class="form-group">
+                <label for="Data_zwrotu">Data zwrotu: * </label>
+                <span class="dateError text-danger"></span>
+                <input type="date" name="Data_zwrotu" id="Data_zwrotu" <% if (formMode != 'createNew') { %> value="<%= new Date(new Date(rental.Data_zwrotu).setDate(new Date(rental.Data_zwrotu).getDate() + 1)).toISOString().substr(0, 10) %>" <% } %> class="form-control" <%=(formMode=='showDetails') ? 'disabled' : ''%>>
+            </div>
+            <% if (formMode =='showDetails') { %>
+            <div class="row">
+                <div class="col-md-4 mt-2">
+                    <a href="/rentals/edit/<%=rental.IdWypozyczenie%>" class="btn btn-success">Edytuj</a>
+                </div>
+            </div>
+            <% } %>
+            <div class="row">
+            <% if (formMode != 'showDetails') { %>
+                <div class="col-md-4">
+                    <input type="submit" class="btn btn-primary w-100 mt-4" value="<%=btnLabel%>">
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-primary w-100 mt-4" href="/rentals">Anuluj</a>
+                </div>
+            <% } %>
+            </div>
+            <span id="errorsSummary" class="text-danger">
+                <% if (typeof validationErrors !== 'undefined' && validationErrors && validationErrors.find(error => error)) { %>
+                    <% for (let error of validationErrors) { %>
+                    <p><%= error.message %></p>
+                    <% } %>
+                <% } %>
+            </span>
+        </form>
+        <% if (formMode == 'showDetails') { %>
+            <h2 class="my-4">Dodatkowe szczegóły wypożyczenia</h2>
+            <h3>Klient</h3>
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Imie</th>
+                        <th scope="col">Nazwisko</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= rental.Klient.Imie %></td>
+                        <td><%= rental.Klient.Nazwisko %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Instrument</h3>
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Nazwa</th>
+                        <th scope="col">Cena za dzien</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= rental.Instrument.Nazwa %></td>
+                        <td><%= rental.Instrument.Cena_za_dzien %></td>
+                    </tr>
+                </tbody>
+            </table>
+        <% } %>
+        <a href="/rentals" class="btn btn-dark mt-2">Wróć</a>
+    </main>
+</section>
+<script type="application/javascript">
+    function validatePostRentalForm() {
+    let valid = true;
+    let rentalDate = new Date(document.querySelector("#Data_wypozyczenia").value);
+    let rentalReturn = new Date(document.querySelector("#Data_zwrotu").value);
+    if(rentalDate.getTime() > rentalReturn.getTime()) {
+        valid = false;
+        let error = document.querySelector(".dateError");
+        error.innerText = "Data wypożyczenia nie może być większa od daty zwrotu!";
+        return valid;
+    } else if (rentalDate.getTime() < (new Date).getTime()) {
+        valid = false;
+        let error = document.querySelector(".dateError");
+        error.innerText = "Data wypożyczenia nie może być mniejsza niż aktualny dzień!";
+        return valid;
+    } else {
+        return valid;
+    }
+}
+</script>
+<%- include('../../fragments/footer.ejs') %>

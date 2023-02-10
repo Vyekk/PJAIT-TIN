@@ -1,0 +1,47 @@
+    <%- include('../fragments/header.ejs') %>
+    <section id="my-contact" class="py-5">
+        <div class="container">
+            <h2 class="display-5">Skontaktuj się z nami</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="firstName">Imię:</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Nazwisko:</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Numer telefonu: * - pole opcjonalne</label>
+                            <input type="text" id="phoneNumber" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="areaContent">Treść wiadomości:</label>
+                            <textarea class="form-control" id="areaContent" rows="3" required></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-dark btn-lg w-100 mt-4">Wyślij</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="my-card-contact card">
+                        <img src="../img/pexels-movidagrafica-barcelona-1475021.jpg" alt="" class="card-img">
+                        <div class="card-img-overlay text-white text-center mt-5">
+                            <h2 class="my-card-title">Odpowiadamy w ciągu jednego dnia!</h2>
+                            <h3 class="my-card-subtitle">Jeśli chcesz żebyśmy do Ciebie zadzwonili podaj numer!</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('../fragments/footer.ejs') %>

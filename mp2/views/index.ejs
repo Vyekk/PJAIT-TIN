@@ -1,0 +1,67 @@
+    <%- include('./fragments/header.ejs') %>
+    <div class="my-jumbo jumbotron jumbotron-fluid py-5 text-white">
+        <div class="container text-center">
+            <h1 class="display-4 text-uppercase">InstrumentRental</h1>
+            <h2 class="lead mb-3">Wypożycz swój instrument</h2>
+            <a href="/login" class="btn btn-danger">Wypożycz</a>
+        </div>
+    </div>
+    <main>
+        <section id="my-about" class="py-5">
+            <div class="container mb-3">
+                <h2 class="display-6 mb-3">Poznaj naszą firmę</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, recusandae quod tempore tempora eos,
+                    officia inventore illum numquam ad soluta vel quasi est ex aspernatur unde modi dignissimos eligendi
+                    architecto similique totam id ratione facilis sunt repudiandae! Itaque, architecto molestias.</p>
+                <p class="lead text-danger">Zacznij korzystać z naszych usług już dzisiaj!</p>
+            </div>
+        </section>
+        <section id="my-articles" class="py-5">
+            <div class="container">
+                <h2 class="display-6 mb-3">Nasze artykuły</h2>
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <article class="col-md-6 mb-2">
+                                <div class="card">
+                                    <img src="img/pexels-méline-waxx-165971.jpg" alt="Zadbana gitara" class="card-img-top">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Zadbaj o nasz instrument</h4>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur praesentium
+                                            ipsum blanditiis aliquid quas inventore eligendi officia a ea dicta!</p>
+                                        <a href="/articles/article1" class="card-link btn btn-dark">Czytaj dalej</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="col-md-6 mb-2">
+                                <div class="card">
+                                    <img src="img/pexels-ruslan-alekso-2016810.jpg" alt="Gitara typu stratocaster"
+                                        class="card-img-top">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Czy kształt ma znaczenie?</h4>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur praesentium
+                                            ipsum blanditiis aliquid quas inventore eligendi officia a ea dicta!</p>
+                                        <a href="/articles/article2" class="card-link btn btn-dark">Czytaj dalej</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <aside class="col-md-2 text-center text-md-start">
+                        <h3>Odkrywaj</h3>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-12 my-2">
+                                    <input type="text" name="szukaj" placeholder="Wyszukaj artykuł">
+                                </div>
+                                <div class="col-12 my-2">
+                                    <input type="button" value="Szukaj" class="btn btn-dark">
+                                </div>
+                            </div>
+                        </form>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('./fragments/footer.ejs') %>
