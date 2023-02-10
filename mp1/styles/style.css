@@ -1,0 +1,28 @@
+.my-jumbo {
+    background-image: url("../img/pexels-stephen-niemeier-65718.jpg");
+    background-size: cover;
+    background-position: center;
+}
+#my-about {
+    background-color: #f6f6f6;
+}
+.my-card-contact {
+    font-size: 10px;
+}
+.my-card-title {
+    font-size: 3em;
+}
+.my-card-subtitle {
+    font-size: 1.5em;
+}
+@media screen and (min-width: 768px) {
+    .contact-footer {
+        position: fixed;
+        bottom: 0;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .my-card-contact {
+        font-size: 16px;
+    }
+}
